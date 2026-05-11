@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/*.db-journal
+.env*.local
+.cursor/
+.DS_Store
+coverage

@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - run: npm run db:check:pg
+      - run: npm run lint
+      - run: npm run test
+      - run: npm run build
+
+  postgres-integration:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: bitvault
+          POSTGRES_PASSWORD: bitvault
+          POSTGRES_DB: bitvault
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U bitvault -d bitvault"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - name: Verify Drizzle migrations against live Postgres
+        env:
+          DATABASE_URL: postgresql://bitvault:bitvault@localhost:5432/bitvault
+        run: npm run db:verify:pg

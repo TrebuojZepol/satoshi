@@ -1,0 +1,9 @@
+export const BITCOIN_ORANGE = "#F7931A";
+export const MOCK_WALLET_BALANCE_SATS = 1_000_000_000n;
+export const INITIAL_BLOCK_HEIGHT = 890_000;
+export const MOCK_BLOCK_TIME_MS = 600_000;
+
+export const MIN_ORDER_SATS = 100_000n;
+export const MAX_ORDER_SATS = 10_000_000_000n;
+export const MAX_USER_OPEN_SATS_PER_BATCH = 10_000_000_000n;
+export const ORACLE_PRICE_BAND_BPS = 2000n;
