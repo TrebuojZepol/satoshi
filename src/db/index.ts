@@ -56,7 +56,7 @@ export function getDbPath() {
   if (process.env["BV_DB_PATH"]) {
     return process.env["BV_DB_PATH"];
   }
-  return path.join(process.cwd(), "data", "bitvault.db");
+  return path.join(process.cwd(), "data", "satoshifi.db");
 }
 
 function runSqliteMigrationsIfPresent(
@@ -98,7 +98,7 @@ export async function initDatabase(): Promise<void> {
         await migratePg(_db, { migrationsFolder: POSTGRES_MIGRATIONS_FOLDER });
       } else {
         console.warn(
-          "[bitvault] PostgreSQL is configured but no bundled migrations were found under drizzle/postgres. Generate with `npm run db:generate:pg` and commit the output.",
+          "[satoshifi] PostgreSQL is configured but no bundled migrations were found under drizzle/postgres. Generate with `npm run db:generate:pg` and commit the output.",
         );
       }
       return;

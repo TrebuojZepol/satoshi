@@ -1,4 +1,4 @@
-# Base de datos BitVault (guía breve en español)
+# Base de datos SatoshiFi (guía breve en español)
 
 ## Dos modos: SQLite y PostgreSQL
 
@@ -19,14 +19,14 @@ docker compose up -d postgres
 
 Usuario / contraseña / base (coinciden con `docker-compose.yml`):
 
-- Usuario: `bitvault`
-- Contraseña: `bitvault`
-- Base: `bitvault`
+- Usuario: `satoshifi`
+- Contraseña: `satoshifi`
+- Base: `satoshifi`
 
 En `.env.local`:
 
 ```env
-DATABASE_URL=postgresql://bitvault:bitvault@127.0.0.1:5432/bitvault
+DATABASE_URL=postgresql://satoshifi:satoshifi@127.0.0.1:5432/satoshifi
 ```
 
 Luego:

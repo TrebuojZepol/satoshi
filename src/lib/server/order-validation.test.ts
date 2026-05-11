@@ -11,7 +11,7 @@ describe("validateOrderInput", () => {
   beforeEach(async () => {
     delete process.env["DATABASE_URL"];
     resetDbSingletonForTests();
-    dbPath = path.join(os.tmpdir(), `bitvault-test-${Date.now()}.db`);
+    dbPath = path.join(os.tmpdir(), `satoshifi-test-${Date.now()}.db`);
     process.env["BV_DB_PATH"] = dbPath;
     const db = getDb();
     const { batchOrders } = getSchema();

@@ -30,7 +30,17 @@ describe("rpcProxyAuthDeniedResponse", () => {
     expect(res).toBeNull();
   });
 
-  it("accepts x-bitvault-rpc-secret", () => {
+  it("accepts x-satoshifi-rpc-secret", () => {
+    process.env["BITVAULT_RPC_PROXY_SECRET"] = "abc123";
+    const res = rpcProxyAuthDeniedResponse(
+      new Request("http://localhost/", {
+        headers: { "x-satoshifi-rpc-secret": "abc123" },
+      }),
+    );
+    expect(res).toBeNull();
+  });
+
+  it("accepts legacy x-bitvault-rpc-secret", () => {
     process.env["BITVAULT_RPC_PROXY_SECRET"] = "abc123";
     const res = rpcProxyAuthDeniedResponse(
       new Request("http://localhost/", {

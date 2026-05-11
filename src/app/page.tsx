@@ -10,7 +10,7 @@ export default function LandingPage() {
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-slate-900">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-4 py-6">
         <span className="text-lg font-semibold text-accent" data-testid="landing-logo">
-          BitVault
+          SatoshiFi
         </span>
         <div className="flex gap-2">
           <Button asChild variant="ghost">

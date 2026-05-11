@@ -15,7 +15,7 @@ async function main() {
   const url = process.env["DATABASE_URL"]?.trim();
   if (!url) {
     console.error(
-      "[db:verify:pg] Falta DATABASE_URL. Ejemplo: postgresql://bitvault:bitvault@127.0.0.1:5432/bitvault",
+      "[db:verify:pg] Falta DATABASE_URL. Ejemplo: postgresql://satoshifi:satoshifi@127.0.0.1:5432/satoshifi",
     );
     process.exit(1);
   }

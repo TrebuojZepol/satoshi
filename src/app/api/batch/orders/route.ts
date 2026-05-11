@@ -12,9 +12,13 @@ import { getOracleBtcUsdCents } from "@/lib/server/oracle";
 
 function userKeyFromRequest(req: Request): string {
   const c = req.headers.get("cookie") ?? "";
-  const m = c.match(/(?:^|;\s*)bv_wallet=([^;]+)/);
-  if (m?.[1]) {
-    return decodeURIComponent(m[1]);
+  const mNew = c.match(/(?:^|;\s*)sf_wallet=([^;]+)/);
+  if (mNew?.[1]) {
+    return decodeURIComponent(mNew[1]);
+  }
+  const mLegacy = c.match(/(?:^|;\s*)bv_wallet=([^;]+)/);
+  if (mLegacy?.[1]) {
+    return decodeURIComponent(mLegacy[1]);
   }
   return "anonymous";
 }

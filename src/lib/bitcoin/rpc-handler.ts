@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { handleMockBitcoinRpcRequest } from "@/lib/bitcoin/mock-rpc";
 import { isBitcoinRpcMethodAllowed } from "@/lib/server/bitcoin-rpc-allowlist";
 import { callBitcoinCoreRpc } from "@/lib/server/bitcoin-core-rpc";
-import { isBitcoinRpcMode } from "@/lib/server/bitvault-env";
+import { isBitcoinRpcMode } from "@/lib/server/satoshifi-env";
 import { rpcProxyAuthDeniedResponse } from "@/lib/server/rpc-proxy-auth";
 
 type RpcReq = { method?: string; params?: unknown[] };

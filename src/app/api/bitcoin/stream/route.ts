@@ -1,7 +1,7 @@
 import type { BlockStreamPayload } from "@/lib/bitcoin/block-stream-types";
 import { getBlockStreamSnapshot } from "@/lib/bitcoin/chain-snapshot";
 import { subscribeBlocks } from "@/lib/block-engine";
-import { isBitcoinRpcMode } from "@/lib/server/bitvault-env";
+import { isBitcoinRpcMode } from "@/lib/server/satoshifi-env";
 
 export const dynamic = "force-dynamic";
 

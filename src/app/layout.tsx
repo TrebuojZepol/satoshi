@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "BitVault — Bitcoin-native DeFi",
+  title: "SatoshiFi — Bitcoin-native DeFi",
   description: "Batch auctions, DLC vaults, sUSD, and liquidity (mocked stack).",
 };
 

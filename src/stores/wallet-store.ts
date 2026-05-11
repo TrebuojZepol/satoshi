@@ -88,7 +88,7 @@ export const useWalletStore = create<WalletState>()(
       },
     }),
     {
-      name: "bitvault-wallet",
+      name: "satoshifi-wallet",
       partialize: (s) => ({
         provider: s.provider,
         connected: s.connected,

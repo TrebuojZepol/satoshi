@@ -12,7 +12,7 @@ export default defineConfig({
   dbCredentials: {
     url:
       process.env["DATABASE_URL"]?.trim() ??
-      "postgresql://bitvault:bitvault@127.0.0.1:5432/bitvault",
+      "postgresql://satoshifi:satoshifi@127.0.0.1:5432/satoshifi",
   },
   strict: true,
 });

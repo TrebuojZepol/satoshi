@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getBitcoinChainMode } from "@/lib/server/bitvault-env";
+import { getBitcoinChainMode } from "@/lib/server/satoshifi-env";
 import { isRpcProxyAuthConfigured } from "@/lib/server/rpc-proxy-auth";
 import { hasBundledPostgresMigrations, isPostgresDriver } from "@/db";
 

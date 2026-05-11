@@ -26,13 +26,13 @@ jobs:
       postgres:
         image: postgres:16-alpine
         env:
-          POSTGRES_USER: bitvault
-          POSTGRES_PASSWORD: bitvault
-          POSTGRES_DB: bitvault
+          POSTGRES_USER: satoshifi
+          POSTGRES_PASSWORD: satoshifi
+          POSTGRES_DB: satoshifi
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U bitvault -d bitvault"
+          --health-cmd "pg_isready -U satoshifi -d satoshifi"
           --health-interval 5s
           --health-timeout 5s
           --health-retries 10
@@ -45,5 +45,5 @@ jobs:
       - run: npm ci
       - name: Verify Drizzle migrations against live Postgres
         env:
-          DATABASE_URL: postgresql://bitvault:bitvault@localhost:5432/bitvault
+          DATABASE_URL: postgresql://satoshifi:satoshifi@localhost:5432/satoshifi
         run: npm run db:verify:pg

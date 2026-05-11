@@ -10,5 +10,5 @@ export default defineConfig({
   schema: "./src/db/schema.ts",
   out: "./drizzle/sqlite",
   dialect: "sqlite",
-  dbCredentials: { url: "file:./data/bitvault.db" },
+  dbCredentials: { url: "file:./data/satoshifi.db" },
 });

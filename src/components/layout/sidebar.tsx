@@ -52,7 +52,7 @@ export function Sidebar() {
   return (
     <>
       <div className="flex items-center justify-between border-b border-border p-3 lg:hidden">
-        <span className="text-sm font-semibold">BitVault</span>
+        <span className="text-sm font-semibold">SatoshiFi</span>
         <Button
           type="button"
           variant="ghost"
@@ -73,7 +73,7 @@ export function Sidebar() {
       >
         <div className="hidden border-b border-border p-4 lg:block">
           <Link href="/" className="text-lg font-semibold tracking-tight text-accent">
-            BitVault
+            SatoshiFi
           </Link>
           <p className="text-xs text-muted-foreground">Bitcoin-native DeFi (mock)</p>
         </div>

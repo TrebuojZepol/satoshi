@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useWalletStore } from "@/stores/wallet-store";
 
-const COOKIE = "bv_wallet";
+const COOKIE = "sf_wallet";
 
 export function WalletCookieSync() {
   const connected = useWalletStore((s) => s.connected);
@@ -15,8 +15,10 @@ export function WalletCookieSync() {
     }
     if (connected && address) {
       document.cookie = `${COOKIE}=${encodeURIComponent(address)}; path=/; max-age=31536000; samesite=lax`;
+      document.cookie = `bv_wallet=; path=/; max-age=0; samesite=lax`;
     } else {
       document.cookie = `${COOKIE}=; path=/; max-age=0; samesite=lax`;
+      document.cookie = `bv_wallet=; path=/; max-age=0; samesite=lax`;
     }
   }, [connected, address]);
 

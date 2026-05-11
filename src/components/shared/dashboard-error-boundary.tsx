@@ -18,7 +18,7 @@ export class DashboardErrorBoundary extends Component<Props, State> {
   }
 
   override componentDidCatch(error: Error, info: ErrorInfo) {
-    console.error("[bitvault] dashboard error", error, info.componentStack);
+    console.error("[satoshifi] dashboard error", error, info.componentStack);
   }
 
   override render() {

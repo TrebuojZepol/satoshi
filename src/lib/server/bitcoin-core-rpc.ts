@@ -1,4 +1,4 @@
-import { getBitcoinRpcAuth, getBitcoinRpcUrl } from "@/lib/server/bitvault-env";
+import { getBitcoinRpcAuth, getBitcoinRpcUrl } from "@/lib/server/satoshifi-env";
 
 type JsonRpcResponse = {
   result?: unknown;

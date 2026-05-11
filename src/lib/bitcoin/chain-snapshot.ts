@@ -1,6 +1,6 @@
 import type { BlockStreamPayload } from "@/lib/bitcoin/block-stream-types";
 import { getBlockState } from "@/lib/block-engine";
-import { isBitcoinRpcMode } from "@/lib/server/bitvault-env";
+import { isBitcoinRpcMode } from "@/lib/server/satoshifi-env";
 import { callBitcoinCoreRpc } from "@/lib/server/bitcoin-core-rpc";
 
 const TARGET_BLOCK_MS = 600_000;

@@ -1,6 +1,8 @@
-# BitVault
+# SatoshiFi
 
 Bitcoin-native DeFi UI with a **Next.js 15** app, **SQLite or PostgreSQL** persistence (via Drizzle), and a **mock chain** layer that can be switched to **real Bitcoin Core JSON-RPC** and **live BTC/USD** pricing.
+
+Display name is **SatoshiFi**; environment variables still use the historical `BITVAULT_*` prefix for compatibility with existing deployments.
 
 ## Quick start
 
@@ -22,11 +24,11 @@ Copy `.env.example` to `.env.local` and set:
 | `BITVAULT_BITCOIN_MODE` | `mock` (default) or `rpc` for Bitcoin Core |
 | `BITCOIN_RPC_URL` | e.g. `http://127.0.0.1:18443` |
 | `BITCOIN_RPC_USER` / `BITCOIN_RPC_PASSWORD` | RPC auth |
-| `BITVAULT_RPC_PROXY_SECRET` | If set, `POST /api/bitcoin/rpc` requires `Authorization: Bearer …` or `x-bitvault-rpc-secret` (use in production) |
+| `BITVAULT_RPC_PROXY_SECRET` | If set, `POST /api/bitcoin/rpc` requires `Authorization: Bearer …` or `x-satoshifi-rpc-secret` (legacy: `x-bitvault-rpc-secret`) |
 | `BITVAULT_PRICE_SOURCE` | `mock` or `coingecko` for oracle-backed batch limits |
 | `BITVAULT_BITCOIN_NETWORK` | `regtest` (default), `testnet`, or `mainnet` — used by PSBT helpers |
 | `BITVAULT_PSBT_UTXO` | Optional JSON `{ txid, vout, value, wif }` so `POST /api/batch/settlement-psbt` can build a signable 1-in/1-out PSBT (dev only; do not put mainnet WIFs in env in production) |
-| `DATABASE_URL` | When set (e.g. `postgresql://bitvault:bitvault@127.0.0.1:5432/bitvault`), the app uses **Postgres** and applies versioned SQL from `drizzle/postgres` on startup (`drizzle-orm` migrator). Omit for **SQLite** (`./data/bitvault.db` or `BV_DB_PATH`). |
+| `DATABASE_URL` | When set (e.g. `postgresql://satoshifi:satoshifi@127.0.0.1:5432/satoshifi`), the app uses **Postgres** and applies versioned SQL from `drizzle/postgres` on startup (`drizzle-orm` migrator). Omit for **SQLite** (`./data/satoshifi.db` or `BV_DB_PATH`). |
 
 **Ops:** `GET /api/health` returns `bitcoinMode`, `databaseDriver` (`sqlite` or `postgres`), `databaseUrlConfigured`, `postgresMigrationsBundled` (whether `drizzle/postgres` is present), and `rpcProxyAuth` (`required` when `BITVAULT_RPC_PROXY_SECRET` is set). `middleware` applies security headers and a sliding-window **POST** rate limit on `/api/*`.
 
@@ -48,10 +50,10 @@ docker compose up -d
 # .env.local — RPC
 BITVAULT_BITCOIN_MODE=rpc
 BITCOIN_RPC_URL=http://host.docker.internal:18443
-BITCOIN_RPC_USER=bitvault
-BITCOIN_RPC_PASSWORD=bitvault
+BITCOIN_RPC_USER=satoshifi
+BITCOIN_RPC_PASSWORD=satoshifi
 # .env.local — Postgres (omit to stay on SQLite)
-DATABASE_URL=postgresql://bitvault:bitvault@127.0.0.1:5432/bitvault
+DATABASE_URL=postgresql://satoshifi:satoshifi@127.0.0.1:5432/satoshifi
 ```
 
 (Adjust `host.docker.internal` vs `127.0.0.1` depending on where Next runs.)
@@ -73,8 +75,8 @@ npm run build
 The repo builds a **standalone** server bundle (`output: "standalone"` in `next.config.ts`).
 
 ```bash
-docker build -t bitvault .
-docker run --rm -p 3000:3000 -e BITVAULT_BITCOIN_MODE=mock bitvault
+docker build -t satoshifi .
+docker run --rm -p 3000:3000 -e BITVAULT_BITCOIN_MODE=mock satoshifi
 ```
 
 Mount a volume for `./data` if you need persistent **SQLite** in the container. For **Postgres**, pass `-e DATABASE_URL=…` pointing at a reachable instance (compose file includes `postgres` on `5432`).

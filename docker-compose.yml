@@ -1,18 +1,18 @@
 # Local Bitcoin Core (regtest) + optional Postgres for DATABASE_URL.
 # Start: docker compose up -d
-# RPC: http://127.0.0.1:18443  user/pass: bitvault / bitvault
-# Postgres: postgresql://bitvault:bitvault@localhost:5432/bitvault
+# RPC: http://127.0.0.1:18443  user/pass: satoshifi / satoshifi
+# Postgres: postgresql://satoshifi:satoshifi@localhost:5432/satoshifi
 services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: bitvault
-      POSTGRES_PASSWORD: bitvault
-      POSTGRES_DB: bitvault
+      POSTGRES_USER: satoshifi
+      POSTGRES_PASSWORD: satoshifi
+      POSTGRES_DB: satoshifi
     ports:
       - "5432:5432"
     volumes:
-      - bitvault_pg:/var/lib/postgresql/data
+      - satoshifi_pg:/var/lib/postgresql/data
 
   bitcoind:
     image: bitcoin/bitcoin:27.2
@@ -22,8 +22,8 @@ services:
       - -txindex=1
       - -rpcbind=0.0.0.0
       - -rpcallowip=0.0.0.0/0
-      - -rpcuser=bitvault
-      - -rpcpassword=bitvault
+      - -rpcuser=satoshifi
+      - -rpcpassword=satoshifi
       - -fallbackfee=0.0002
     ports:
       - "18443:18443"
@@ -32,4 +32,4 @@ services:
 
 volumes:
   bitcoind_data:
-  bitvault_pg:
+  satoshifi_pg:
